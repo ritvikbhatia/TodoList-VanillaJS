@@ -55,16 +55,23 @@ todoList.addEventListener('click',DeleteTask);
 
  function DeleteTask(event){
     //Delete functionality
-    if(event.target.classList[0]==='delete-button'){
-     { 
-         event.target.parentElement.classList.add('disappear');
+    console.log(event.target.classList[0])
+    if(event.target.classList[0]==='delete-button')
+    { 
         event.target.parentElement.remove();
         task--;
     }
-    }    //Checkmark functionality
+    //click on icon
+    if(event.target.classList[0]==='fas')
+    {
+           event.target.parentElement.parentElement.remove();
+           task--;
+       }
+   //Checkmark functionality
     if(event.target.classList[0]==='check-button'){
         event.target.parentElement.classList.toggle('checked');
     }
     total.innerText = task;
 }
+// **************************************************************************
 }
