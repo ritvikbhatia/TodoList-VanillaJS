@@ -1,17 +1,17 @@
+{
 //selectors
 const todoInput = document.getElementById('input');
 const addButton = document.getElementById('addButton');
 const todoList = document.querySelector('.todo-list');
-const taskLeft = document.querySelector('#counter');
+const total = document.querySelector('#counter');
 var task = 0;
 
-//event listeners
-addButton.addEventListener('click',addTodo);
-todoList.addEventListener('click',checkOrDelete);
-checkAll.addEventListener('click',checkList);
+// ***************************************************************
+// function to a add task 
 
-//functions
-function addTodo(event){
+addButton.addEventListener('click',addTask);
+
+function addTask(event){
 
     event.preventDefault();
 
@@ -25,7 +25,6 @@ function addTodo(event){
     //check button
     const checkButton = document.createElement('button');
     checkButton.classList.add('check-button');
-    checkButton.innerHTML = '<input type="checkbox">';
     listItem.appendChild(checkButton);
 
     //todo-text
@@ -45,33 +44,27 @@ function addTodo(event){
 
     //clear input value
     todoInput.value = '';
-
     task++;
-    taskLeft.innerText = task;
+    total.innerText = task;
 }
 
-function checkOrDelete(event){
+// ***********************************************************
+// function to delete a task
+
+todoList.addEventListener('click',DeleteTask);
+
+ function DeleteTask(event){
     //Delete functionality
     if(event.target.classList[0]==='delete-button'){
-        //maintain task count
-        if(!event.target.parentElement.classList.contains('checked'))
-            task--;
-
-       event.target.parentElement.classList.add('disappear');
-       setTimeout(function(){event.target.parentElement.remove();},900);
-       
+     { 
+         event.target.parentElement.classList.add('disappear');
+        event.target.parentElement.remove();
+        task--;
     }
-    //Checkmark functionality
+    }    //Checkmark functionality
     if(event.target.classList[0]==='check-button'){
         event.target.parentElement.classList.toggle('checked');
     }
-
-    taskLeft.innerText = task;
+    total.innerText = task;
 }
-
-function checkList(event){
-    const todos = todoList.childNodes;
-    todos.forEach(function(item){
-            item.classList.add('checked');
-    });
 }
