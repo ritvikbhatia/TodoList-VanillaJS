@@ -8,3 +8,4 @@ Link: https://ritvikbhatia.github.io/TodoList-VanillaJS/.
 <br>
 This app was just a part of a javascript test to check the actual more styled and more featured app checkout :
 <br>
+Link : https://github.com/ritvikbhatia/Todo-List
